@@ -1,0 +1,20 @@
+﻿@page
+@model mini_AMS.Pages.ChartOfAccounts.EditModel
+@{
+    ViewData["Title"] = "Edit Account";
+}
+<div class="container mt-3">
+    <h3>Edit Account</h3>
+    <form method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="mb-3">
+            <label>Name</label>
+            <input class="form-control" asp-for="Name" />
+        </div>
+        <div class="mb-3">
+            <label>Parent Id (Optional)</label>
+            <input class="form-control" asp-for="ParentId" />
+        </div>
+        <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+</div>

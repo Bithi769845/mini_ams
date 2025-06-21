@@ -1,0 +1,19 @@
+﻿@page
+@model mini_AMS.Pages.ChartOfAccounts.CreateModel
+@{
+    ViewData["Title"] = "Create Account";
+}
+<div class="container mt-3">
+    <h3>Create New Account</h3>
+    <form method="post">
+        <div class="mb-3">
+            <label>Name</label>
+            <input class="form-control" asp-for="Name" />
+        </div>
+        <div class="mb-3">
+            <label>Parent Id (Optional)</label>
+            <input class="form-control" asp-for="ParentId" />
+        </div>
+        <button class="btn btn-success" type="submit">Save</button>
+    </form>
+</div>

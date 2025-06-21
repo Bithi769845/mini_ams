@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - mini_AMS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/mini_AMS.styles.css" asp-append-version="true" />
+    <style>
+        /* Navbar Links Styles */
+        .navbar .nav-link {
+            position: relative;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+            .navbar .nav-link.nav-hover::after {
+                content: '';
+                position: absolute;
+                bottom: 3px;
+                left: 0;
+                width: 100%;
+                height: 3px;
+                background: #007bff;
+                transform: scaleX(0);
+                transform-origin: right;
+                transition: transform 0.3s ease;
+            }
+
+            .navbar .nav-link.nav-hover:hover {
+                color: #007bff !important;
+            }
+
+                .navbar .nav-link.nav-hover:hover::after {
+                    transform: scaleX(1);
+                    transform-origin: left;
+                }
+
+        /* Navbar Branding Styles */
+        .navbar .navbar-brand {
+            font-size: 1.25rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+            .navbar .navbar-brand:hover {
+                color: #0056b3;
+            }
+
+    </style>
+</head>
+<body>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow sticky-top">
+                <div class="container">
+                    <!-- Branding -->
+                    <a class="navbar-brand fw-bold text-primary" asp-area="" asp-page="/Index1">
+                        <i class="bi bi-person-lines-fill"></i> Account Management System
+                    </a>
+
+                    <!-- Responsive Toggle Button -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Navbar Links -->
+                    <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item mx-2">
+                                <a class="nav-link text-dark fw-semibold nav-hover" asp-area="" asp-page="/Index1">Home</a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link text-dark fw-semibold nav-hover" asp-area="" asp-page="/ChartOfAccounts/Index">Chart Of Accounts</a>
+                            </li>
+                        </ul>
+                        <div class="ms-3">
+                            <partial name="_LoginPartial" />
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    }
+
+
+   
+     
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - mini_AMS - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
