@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("mini_AMS")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aad8f80a50f611cd040e7898e9a22990bf795b0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("mini_AMS")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mini_AMS")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

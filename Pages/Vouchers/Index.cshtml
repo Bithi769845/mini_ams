@@ -1,0 +1,67 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Vouchers List";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Vouchers</h2>
+        <a href="/Vouchers/Create" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Add New Voucher
+        </a>
+    </div>
+    <hr />
+
+    @if (Model.Vouchers?.Any() ?? false)
+    {
+        @foreach (var v in Model.Vouchers)
+        {
+            <div class="card mt-3 shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>Voucher #@v.Id</strong> (@v.VoucherType) —
+                            Date: @v.Date.ToShortDateString() —
+                            Ref: @v.ReferenceNo
+                        </div>
+                        <div>
+                            <!-- Optional: Edit / Delete Buttons -->
+                            <a href="/Vouchers/Edit/@v.Id" class="btn btn-sm btn-light">Edit</a>
+                            <a href="/Vouchers/Delete/@v.Id" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-sm table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Account Name</th>
+                                    <th class="text-end">Debit</th>
+                                    <th class="text-end">Credit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var e in v.Entries)
+                                {
+                                    <tr>
+                                        <td>@e.AccountName</td>
+                                        <td class="text-end">@string.Format("{0:N2}", e.Debit)</td>
+                                        <td class="text-end">@string.Format("{0:N2}", e.Credit)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-info mt-3">
+            No vouchers found. Click <a href="/Vouchers/Create">here</a> to add a new one.
+        </div>
+    }
+</div>

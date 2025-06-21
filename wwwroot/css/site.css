@@ -20,3 +20,25 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+table.table-hover tbody tr:hover {
+    background-color: #f9f9f9;
+}
+
+form .form-select, form input {
+    padding: .5rem;
+    border-radius: .25rem;
+    border: 1px solid #ccc;
+}
+
+#addRowBtn {
+    background: linear-gradient(45deg, #007bff, #00d4ff);
+    color: #fff;
+    font-weight: bold;
+}
+
+.remove {
+    color: #ff4d4d;
+    font-size: 18px;
+}

@@ -23,12 +23,13 @@ namespace mini_AMS.Pages.Admin
 
         [BindProperty]
         public string RoleName { get; set; }
+        public List<IdentityRole> Roles { get; set; } = new List<IdentityRole>();
 
         public string Message { get; set; }
 
         public void OnGet()
         {
-            // পেজ খোলার সময় এখানে আর কিছুর দরকার নেই
+            Roles = _roleManager.Roles.ToList();
         }
 
         // ✅ ডিফল্ট রোল তৈরি করার অ্যাকশন

@@ -22,6 +22,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddRazorPages();
 
 builder.Services.AddScoped<ChartOfAccountsService>();
+builder.Services.AddScoped<VoucherService>();
+
 
 var app = builder.Build();
 

@@ -73,12 +73,12 @@
                     <!-- Navbar Links -->
                     <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
                         <ul class="navbar-nav">
-                            <li class="nav-item mx-2">
-                                <a class="nav-link text-dark fw-semibold nav-hover" asp-area="" asp-page="/Index1">Home</a>
-                            </li>
-                            <li class="nav-item mx-2">
+                            @* <li class="nav-item mx-2">
+                                <a class="nav-link text-dark fw-semibold nav-hover" asp-area="" asp-page="/Vouchers/Index">Vouchers</a>
+                            </li> *@
+                           @*  <li class="nav-item mx-2">
                                 <a class="nav-link text-dark fw-semibold nav-hover" asp-area="" asp-page="/ChartOfAccounts/Index">Chart Of Accounts</a>
-                            </li>
+                            </li> *@
                         </ul>
                         <div class="ms-3">
                             <partial name="_LoginPartial" />
@@ -87,16 +87,38 @@
                 </div>
             </nav>
         </header>
+
     }
 
 
+    <!-- Layout Example with Sidebar and Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div class="col-md-3 col-lg-2 bg-light p-3 border-end" style="min-height:100vh;">
+                    <nav class="nav flex-column">
+                    <a class="nav-link active" aria-current="page" asp-page="/Index1">Dashboard</a>
+                    <a class="nav-link" asp-page="/Vouchers/Index">Vouchers</a>
+                    <a class="nav-link" asp-page="/ChartOfAccounts/Index">Chart Of Accounts</a>
+                    <a class="nav-link" asp-page="/Admin/AssignRoles">Assign Role</a>
+                </nav>
+            </div>
+            }
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 p-4">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+ 
    
      
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+
 
     <footer class="border-top footer text-muted">
         <div class="container">
