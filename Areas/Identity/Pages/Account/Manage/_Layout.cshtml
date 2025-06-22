@@ -1,0 +1,75 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout) && parentLayout != null)
+    {
+        Layout = parentLayout.ToString();
+    }
+    else
+    {
+        Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+
+<style>
+    /* Premium card style */
+    .premium-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        padding: 2rem;
+        transition: box-shadow 0.3s ease;
+    }
+
+        .premium-card:hover {
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+    /* Sidebar style */
+    .sidebar-nav {
+        background: #f9fafb;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+        height: fit-content;
+        position: sticky;
+        top: 100px;
+    }
+    /* Heading style */
+    .page-title {
+        font-weight: 700;
+        font-size: 2.75rem;
+        color: #212529;
+        margin-bottom: 0.25rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .page-subtitle {
+        font-size: 1.125rem;
+        color: #6c757d;
+        margin-bottom: 2rem;
+        font-weight: 500;
+    }
+</style>
+
+<div class="container my-5">
+    <header>
+        <h1 class="page-title">Manage Your Account</h1>
+        <p class="page-subtitle">Securely update your profile, password, and privacy preferences.</p>
+    </header>
+
+    <div class="row gx-5">
+        <aside class="col-lg-3 ">
+            <nav class="sidebar-nav shadow">
+                <partial name="_ManageNav" />
+            </nav>
+        </aside>
+
+        <section class="col-lg-9 ">
+            <div class="premium-card">
+                @RenderBody()
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
